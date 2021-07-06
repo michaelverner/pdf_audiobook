@@ -3,11 +3,7 @@ from functools import wraps
 
 
 def login_required(f):
-    """
-    Decorate routes to require login.
-
-    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
-    """
+    """ Decorate routes to require login. """
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("user_id") is None:
@@ -18,7 +14,6 @@ def login_required(f):
 
 # List of allowed extensions of the files
 ALLOWED_EXTENSIONS = {'pdf'}
-
 
 # Check if the file's extension is allowed
 def allowed_file(filename):
