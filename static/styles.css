@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'BrushScriptMT';
+
+    src:    url('https://nomail.com.ua/files/eot/240a8744edc221dfd7467d2d17105fa0.eot?#iefix') format('embedded-opentype'),
+            url('https://nomail.com.ua/files/woff/240a8744edc221dfd7467d2d17105fa0.woff') format('woff'),
+            url('https://nomail.com.ua/files/woff2/240a8744edc221dfd7467d2d17105fa0.woff2') format('woff2');
+}
+
+@font-face { font-family: 'BrushScriptMT';  src: local('BrushScriptMT'), url('https://nomail.com.ua/files/woff/240a8744edc221dfd7467d2d17105fa0.woff') format('woff'); }
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.navbar-light .navbar-brand {
+    color: #e60016;
+}
+
+main .form-control
+{
+    /* Center form controls */
+    display: inline-block;
+
+    /* Override Bootstrap's 100% width for form controls */
+    max-width: 100%;
+}
+
+main
+{
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* Center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: auto;
+    width: 90%;
+}
+
+.center {
+    margin-left: auto;
+    margin-right:auto;
+}
+
+th {
+    background-color: #fdd;
+    max-width: 100%;
+}
+
+td {
+    margin-top: 1%;
+    background-color: #ddf;
+    max-width: 100%;
+}
+
+.Box {
+    padding: 30px;
+}
+
+.form-control {
+    padding: 3px 5px;
+    width: auto;
+}
+
+textarea {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    box-shadow: 1px 1px 1px #666;
+    width: 100%;
+}
+
