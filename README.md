@@ -8,7 +8,7 @@ My project is a web application that was created using Python (Flask), SQLite, H
 
 ### **Purpose:**
 
-The purpose of my project is to convert text from PDF files into audio that the user can listen to immediately or download to his/her own device in .mp3 format. I believe that "PDF Audiobook" could improve the lives of students who encounter difficulties reading text.
+The purpose of my project is to convert text from PDF files into audio that the user can listen to immediately or download to his/her own device in .mp3 format. 
 
 ## **Structure:**
 
