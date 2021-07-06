@@ -46,7 +46,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure uploading of the files
-UPLOAD_FOLDER = '/home/ubuntu/project/static/files'
+UPLOAD_FOLDER = '/static/files'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -57,13 +57,14 @@ cursor = conn.cursor()
 
 @app.route("/init")
 def init():
-    """ Initial page that's only purpose is to redirect the user to login or signUp pages """
+    """ Initial page that's only purpose is to redirect the user to login or signup pages """
     return render_template("init.html")
 
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     """Register user"""
+    
     if request.method == "POST":
 
         # Ensure username was submitted
@@ -99,15 +100,15 @@ def signup():
             flash(f"User with this username already exists, please provide unique username, for example {username}1", "warning")
             return redirect(request.url)
 
-        # Insert new user to the database
+        # Insert new user into the database
         cursor.execute("INSERT INTO users (username, hash) VALUES(?, ?)", (username, generate_password_hash(password)))
         flash("Thank you for registration!", "success")
 
         # Send user an email
         email = request.form.get("email")
         if email:
-            message = Message("You are successfully signed up to my project page!", recipients=[email])
-            message.body = f"Hello, {username}! Welcome to my project's page where you can upload your PDF files, get text from them and listen to an audio files created for you. Enjoy!"
+            message = Message("You are successfully signed up to my application!", recipients=[email])
+            message.body = f"Hello, {username}! Welcome to my application where you can upload your PDF files, get text from them and listen to an audio files created for you. Enjoy!"
             mail.send(message)
 
         # Apply changes in database
@@ -159,7 +160,7 @@ def login():
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    """ Here user can select previously uploaded files (if any) and convert them into text or audio """
+    """ Here user can select previously uploaded files (if any) and convert them into text and audio """
 
     session_id = session.get("user_id")
 
@@ -192,7 +193,7 @@ def index():
         # Each user has ones own folder to avoid conflict between files with the same name uploaded by different users
         audio_path = f"static/audio/{session_id}"
 
-        # Check if user folder in "audio" extsts and if not then create one
+        # Check if user's folder in "audio" extsts and if not then create one
         if not os.path.exists(audio_path):
             os.mkdir(audio_path)
 
@@ -224,6 +225,7 @@ def logout():
 @app.route("/change_password", methods=["GET", "POST"])
 def change_password():
     """Change users password"""
+    
     session_id = session.get("user_id")
 
     if request.method == "POST":
@@ -282,6 +284,7 @@ def change_password():
 @login_required
 def upload():
     """ Upload PDF file """
+    
     session_id = session.get("user_id")
 
     if request.method == 'POST':
