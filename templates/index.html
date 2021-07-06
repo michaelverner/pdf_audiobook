@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block script %}
+    <script>
+        function copy() {
+            let textarea = document.getElementById("text");
+            textarea.select();
+            document.execCommand("copy");
+            alert("Text copied to clipboard");
+        }
+
+        function erase() {
+            document.getElementById("text").value = "";
+            alert("Text area cleared");
+        }
+    </script>
+{% endblock %}
+
+{% block main %}
+    <h3>Choose your file from the list:</h3>
+    <form action="/" method="post">
+
+        <select class="custom-select" name = "list1" id="list1" style="max-width:60%">
+            <option disabled selected value="">Choose a file</option>
+            {% for name in list1 %}
+            <option value = "{{ name }}">{{ name }}</option>
+            {% endfor %}
+
+        </select>
+        <input class="btn btn-primary" type="submit" value="Confirm">
+    </form>
+
+    <h3 style="margin:10px;">Extracted text here:</h3>
+    <textarea id="text" name="text" rows="10">
+            {{ full_text }}
+    </textarea>
+
+    <button class="btn btn-secondary" style="margin: 1px" onclick="copy()">Copy text to clipboard</button>
+    <button class="btn btn-secondary" onclick="erase()">Clear text area</button>
+
+    <div class="form-group">
+        <h4> Play audio: </h4>
+
+        <audio controls style="max-width: 100%">
+            <source src="{{ audio_path }}/{{ audio_file_name }}" type="audio/mpeg" >
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+{% endblock %}

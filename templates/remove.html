@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove
+{% endblock %}
+
+{% block main %}
+    <form action="/remove" method="post">
+        <label for="list2"><h3>Choose the file you'd like to remove:</h3></label>
+
+        <select class="custom-select" name = "list2" id="list2" style="max-width:60%;">
+            <option disabled selected value="">Choose a file to be removed</option>
+            {% for name in list2 %}
+            <option value = "{{ name }}">{{ name }}</option>
+            {% endfor %}
+
+        </select>
+        <input class="btn btn-primary" type="submit" value="Remove">
+    </form>
+{% endblock %}

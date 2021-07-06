@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Initial page
+{% endblock %}
+
+{% block main %}
+
+        <h2 style="color: #000; font-family: Garamond, serif;">Welcome to my final project within the CS50's Introduction to Computer Science</h2>
+        <h6 style="margin-top: 20px; margin-bottom: 20px">Please log in to continue or create new account</h6>
+        <a href=login><button action="/login" class="btn btn-primary" type="submit">Log in</button></a>
+        <a href=signup><button action="/signup" class="btn btn-primary" type="submit">Sign Up</button></a>
+
+{% endblock %}
